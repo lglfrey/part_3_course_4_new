@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" href="/DetailStyle.css" rel="stylesheet">
+
+</head>
+<body>
+<table>
+    <form th:action="'/' + ${ModelName} + (${#strings.contains(ModelName, 'Create') ? '/Create/Submit' : '/Edit/Submit'})">
+        <thead>
+        <tr>
+            <th colspan="99" th:text="${ModelName}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:each="fieldName : ${fieldNameList}" th:text="${fieldName}"></td>
+        </tr>
+        <tr>
+            <td th:each="fieldName, fieldNameind  : ${fieldNameList}">
+                <input th:name="${fieldNameind.index}" th:value="${fieldNameind.index}" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="99">
+                <button class="button" type="submit">Подтвердить</button>
+            </td>
+        </tr>
+        </tbody>
+    </form>
+</table>
+</body>
+</html>
